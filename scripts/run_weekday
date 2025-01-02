@@ -1,0 +1,15 @@
+#!/bin/bash -
+
+set -x
+fn=$(basename "$0")
+args="--runs 10 --early-stop-epochs 1000 --max-epochs 1000"
+
+for dataset in weekday; do
+    # LaI
+    time python3 -u main.py GCN $dataset $args --input-label 0.5
+    # LR1
+    time python3 -u main.py GCN $dataset $args --input-label 0.5 --for-iter --original-reuse
+    # LR+1
+    time python3 -u main.py GCN $dataset $args --input-label 1 --for-iter 1 --drop-state 0.5
+done | tee -a logs/$fn.log
+date

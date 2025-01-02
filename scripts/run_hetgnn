@@ -1,0 +1,29 @@
+#!/bin/bash -
+
+set -x
+fn=$(basename "$0")
+args="--runs 10 --dropout 0.5"
+
+function run_gnns() {
+    time python3 -u main.py GCN $@
+    time python3 -u main.py SAGE $@
+    time python3 -u main.py GAT --hidden 64 --heads 1 $@
+    time python3 -u main.py LINKX $@
+    time python3 -u main.py ACM $@
+}
+
+for dataset in BGP genius; do
+    run_gnns $dataset
+    for alpha in 0.1 0.3 0.5 0.7 0.9; do
+        for beta in 0 0.25 0.5; do
+            # LR+
+            for reuse in 1 2 3 300; do
+                run_gnns $dataset --input-label 1 --drop-state $alpha --drop-features $beta --for-iter $reuse
+            done
+            # LaE
+            run_gnns $dataset --input-label 1 --drop-state $alpha --drop-features $beta --for-iter 300 --back-iter -1 --terminate-back
+        done
+    done
+done | tee -a logs/$fn.log
+
+date
