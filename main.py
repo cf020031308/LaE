@@ -470,6 +470,10 @@ def load_data(name):
             if args.dataset in ('cornell', 'texas', 'wisconsin')
             else pyg_data.WikipediaNetwork(dn, args.dataset)
             if args.dataset in ('chameleon', 'crocodile', 'squirrel')
+            else pyg_data.Coauthor(dn, name='CS') if args.dataset == 'coauthor-cs'
+            else pyg_data.Coauthor(dn, name='Physics') if args.dataset == 'coauthor-phy'
+            else pyg_data.Amazon(dn, name='Computers') if args.dataset == 'amazon-com'
+            else pyg_data.Amazon(dn, name='Photo') if args.dataset == 'amazon-photo'
             else None
         ).data
         X, Y, E, train_mask, valid_mask, test_mask = map(
@@ -479,7 +483,7 @@ def load_data(name):
             valid_masks = [valid_mask] * args.runs
             test_masks = [test_mask] * args.runs
             is_bidir = True
-        else:
+        elif train_mask is not None:
             train_masks = [train_mask[:, i % train_mask.shape[1]]
                            for i in range(args.runs)]
             valid_masks = [valid_mask[:, i % valid_mask.shape[1]]
