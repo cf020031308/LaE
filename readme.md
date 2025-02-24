@@ -99,4 +99,15 @@ To run IGNN and EIGNN, you need to clone [this commit of EIGNN](https://github.c
 ## Citation
 
 ```bibtex
+@article{LUO2025107285,
+  title = {Label as Equilibrium: A performance booster for Graph Neural Networks on node classification},
+  journal = {Neural Networks},
+  pages = {107284},
+  year = {2025},
+  issn = {0893-6080},
+  doi = {https://doi.org/10.1016/j.neunet.2025.107284},
+  url = {https://www.sciencedirect.com/science/article/pii/S0893608025001637},
+  author = {Yi Luo and Guangchun Luo and Guiduo Duan and Aiguo Chen},
+  keywords = {Graph Neural Networks, Node classification},
+}
 ```

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Yi"
+  given-names: "Luo"
+- family-names: "Guangchun"
+  given-names: "Luo"
+- family-names: "Guiduo"
+  given-names: "Duan"
+- family-names: "Aiguo"
+  given-names: "Chen"
+title: "Label as Equilibrium: A performance booster for Graph Neural Networks on node classification"
+url: "https://github.com/cf020031308/LaE"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Yi"
+    given-names: "Luo"
+  - family-names: "Guangchun"
+    given-names: "Luo"
+  - family-names: "Guiduo"
+    given-names: "Duan"
+  - family-names: "Aiguo"
+    given-names: "Chen"
+  title: "Label as Equilibrium: A performance booster for Graph Neural Networks on node classification"
+  journal: "Neural Networks"
+  pages: 107284
+  year: 2025
+  issn: "0893-6080"
+  doi: "https://doi.org/10.1016/j.neunet.2025.107284"
+  url: "https://www.sciencedirect.com/science/article/pii/S0893608025001637"
